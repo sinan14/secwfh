@@ -1,0 +1,98 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Ionic registeration form </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding">
+    <form [formGroup]="form" (ngSubmit)="saveDetails()">
+      <ion-list>
+        <ion-item class="ion-margin-bottom">
+          <ion-label position="floating">Your Name</ion-label>
+          <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
+        <small
+          *ngIf="form.get('name').invalid && (form.get('name').dirty ||form.get('name').touched )"
+        >
+          <small *ngIf="(form.get('name')).errors?.required"
+            >Name is required</small
+          >
+          <!--question mark(?) is a safe navigation operator-->
+          <small *ngIf="(form.get('name')).errors?.minlength"
+            >Please enter more than 4 character</small
+          >
+        </small>
+
+        <ion-item class="ion-margin-bottom">
+          <ion-label position="floating">Your Email address</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+
+        <div
+          *ngIf="(form.get('email').invalid && (form.get('email')).touched) || (form.get('email')).dirty"
+        >
+          <small *ngIf="(form.get('email')).errors?.required"
+            >Email is required</small
+          >
+          <!--question mark(?) is a safe navigation operator-->
+          <small *ngIf="(form.get('email')).errors?.pattern"
+            >Please provide a valid email address</small
+          >
+        </div>
+
+        <!-- <ion-item class="ion-margin-bottom">
+          <ion-label position="floating">DOB</ion-label>
+          <ion-datetime
+            formControlName="dob"
+            displayFormat="MM/DD/YYYY"
+            min="1994-03-14"
+            max="2022-12-09"
+          >
+          </ion-datetime>
+        </ion-item> -->
+
+        <!-- <small
+          *ngIf="form.get('dob').invalid && (form.get('dob').dirty ||form.get('dob').touched )"
+        >
+          DOB is required.
+        </small> -->
+
+        <ion-item class="ion-margin-bottom">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <small
+          *ngIf="form.get('password').invalid && (form.get('password').dirty ||form.get('password').touched )"
+        >
+          Password is required.
+        </small>
+
+        <ion-item class="ion-margin-bottom">
+          <ion-label position="floating">Confirm Password</ion-label>
+          <ion-input
+            type="password"
+            formControlName="confirmPassword"
+          ></ion-input>
+        </ion-item>
+        <small
+          *ngIf="form.get('confirmPassword').invalid && (form.get('confirmPassword').dirty ||form.get('confirmPassword').touched )"
+        >
+          Confirm password is required.
+        </small>
+
+        <ion-item class="ion-float-right" lines="none">
+          <ion-button color="primary" [disabled]="!form.valid" type="submit"
+            >Save Details</ion-button
+          >
+          <ion-button color="primary" (click)="onReset()"
+            >Reset Form</ion-button
+          >
+        </ion-item>
+      </ion-list>
+    </form>
+  </div>
+</ion-content>
