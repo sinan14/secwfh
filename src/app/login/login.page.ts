@@ -11,7 +11,37 @@ export class LoginPage {
   ionViewDidEnter() {
     // this.login();
     // this._sharedService.resetStudentPassword();
-    this._sharedService.loadMatches()
+    this._sharedService.loadMatches();
+    this._sharedService.loadMatchesClient();
+    this.fetchapi({ id: 1, device: 'mobile_new' });
+  }
+  async fetchapi(body) {
+    try {
+      const base64UserName = btoa('9492188326');
+      const base64Password = btoa('srini@4u');
+      const bb = `${base64UserName},${base64Password}`;
+      const ba = btoa('9492188326,srini@4u');
+
+      fetch(
+        'https://www.quackquack.in/qq/visitors/index_new_design_filter.php',
+        {
+          method: 'POST',
+          body,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          },
+        }
+      )
+        .then((res) => res.json)
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((e) => {
+          console.log('error is ', e);
+        });
+    } catch (e) {
+      console.log('SOMETHING WENT WRONG!!!', e);
+    }
   }
   form: FormGroup;
   submitted = false;

@@ -82,11 +82,13 @@ export class sharedService {
     // const ba = btoa('9492188326,srini@4u');
     // const b2 = btoa('9492188326srini@4u');
 
+
     const options = {
-      url: this.#matchesApi,
+      // url: this.#matchesApi,
+      url:`https://www.quackquack.in/qq/visitors/index_new_design_filter.php`,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        Authentication: `Bearer `,
+       
       },
       data: {
         id: 1,
@@ -122,30 +124,30 @@ export class sharedService {
       console.log(`error is `, error);
     }
   }
-  // loadMatchesClient() {
-  //   const url = `${this.#BASE_URL}/qq/home/index41.php`;
-  //   const token = localStorage.getItem('token');
-  //   const base64UserName = btoa('9492188326');
-  //   const base64Password = btoa('srini@4u');
-  //   const bb = `${base64UserName},${base64Password}`;
-  //   const ba = btoa('9492188326,srini@4u');
+  loadMatchesClient() {
+    const url = `${this.#BASE_URL}/qq/home/index41.php`;
+    const token = localStorage.getItem('token');
+    const base64UserName = btoa('9492188326');
+    const base64Password = btoa('srini@4u');
+    const bb = `${base64UserName},${base64Password}`;
+    const ba = btoa('9492188326,srini@4u');
 
-  //   let headers = new HttpHeaders({
-  //     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
 
-  //     // Authorization: base64UserName + base64Password,
-  //   });
-  //   let options = { headers: headers };
-  //   const data = {
-  //     id: 1,
-  //     device: `mobile_new`,
-  //   };
-  //   return this._http.post(url, data, options).subscribe((res:any)=>{
-  //     console.log('res is ',res);
+      // Authorization: base64UserName + base64Password,
+    });
+    let options = { headers: headers };
+    const data = {
+      id: 1,
+      device: `mobile_new`,
+    };
+    return this._http.post(url, data, options).subscribe((res:any)=>{
+      console.log('res is ',res);
 
-  //   },(err:any)=>{
-  //     console.log('err is',err);
+    },(err:any)=>{
+      console.log('err is',err);
 
-  //   })
-  // }
+    })
+  }
 }
