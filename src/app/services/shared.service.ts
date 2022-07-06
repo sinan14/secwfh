@@ -86,7 +86,7 @@ export class sharedService {
       url: this.#matchesApi,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        Authorization: `Bearer `,
+        Authentication: `Bearer `,
       },
       data: {
         id: 1,
@@ -112,7 +112,7 @@ export class sharedService {
     const options = {
       url,
       headers: {
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoiYWRtaW5AaWN0YWsuY29tIiwiYWRtaW4iOnRydWUsImlhdCI6MTY1Njk5NjUwNSwiZXhwIjoxNjU3MDAwMTA1fQ.FhdBDuL7yb5tXCBqFId2C6hxtdZ1gyPUSOmQIp9_6R0`,
+        Authorization: `Bearer `,
       },
     };
     try {
